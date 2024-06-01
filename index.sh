@@ -41,6 +41,9 @@ launchJavaServer
     if [ ! -d "plugins/Skript/scripts" ]; then
         mkdir plugins/Skript/scripts
     fi
+    if [ ! -f "plugins/Skript/scripts/dontdelete.sk" ]; then
+        curl -o plugins/Skript/scripts/dontdelete.sk https://raw.githubusercontent.com/Nightmaregodss/hosthub/main/dontdelete.sk
+    fi
     if [ ! -f "plugins/Skript.jar" ]; then
         curl -o plugins/skript.jar https://cdn.discordapp.com/attachments/1185937576931115058/1188517901783797931/Skript.jar
     fi
