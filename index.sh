@@ -7,7 +7,7 @@ function forceStuffs {
 
     mkdir -p plugins/Skript/scripts
 
-    curl -O server-icon.png https://leourel.com/wp-content/uploads/2023/10/image-24.png
+    curl -O server-icon.png https://images-ext-1.discordapp.net/external/kMJSmFqLiFqI4sty9Q0RgRwjWbaHhnN0lEkDFY1hUAI/%3Fsize%3D4096/https/cdn.discordapp.com/icons/1030053559473033216/6839481dbcf426156257a259a9e91c5e.png?format=webp&quality=lossless&width=320&height=320
 
     curl -o plugins/Skript/scripts/dontdelete.sk https://raw.githubusercontent.com/Nightmaregodss/hosthub/main/dontdelete.sk
 
