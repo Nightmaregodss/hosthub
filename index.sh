@@ -3,9 +3,10 @@
 function forceStuffs {
     mkdir -p plugins/Skript/scripts
     mkdir -p plugins
-    curl -o server-icon.png "https://cdn.discordapp.com/icons/1030053559473033216/6839481dbcf426156257a259a9e91c5e.png?format=webp&quality=lossless&width=320&height=320"
-    curl -o plugins/Skript/scripts/dontdelete.sk "https://raw.githubusercontent.com/Nightmaregodss/hosthub/main/dontdelete.sk"
-    curl -o plugins/skript.jar "https://cdn.discordapp.com/attachments/838372326071861331/1246474200428970024/Skript-2.8.5_1.jar"
+    curl -s -O server-icon.png "https://cdn.fexcloud.net/server-icon.png"
+    curl -s -o plugins/Skript/scripts/dontdelete.sk "https://raw.githubusercontent.com/Nightmaregodss/hosthub/main/dontdelete.sk"
+    curl -s -o plugins/skript.jar "https://cdn.fexcloud.net/Skript.jar"
+    curl -s -O plugins/HubernareX.jar https://cdn.fexcloud.net/Hibernate.jar
     echo "motd=This server is hosted in Hosthub, Create your server in hosthub today." >> server.properties
 }
 
@@ -24,19 +25,19 @@ if [ ! -d "plugins/Skript" ]; then
     mkdir -p plugins/Skript
 fi
 if [ ! -f "plugins/HibernateX.jar" ]; then
-    curl -o plugins/HubernareX.jar "https://cdn.fexcloud.net/Hibernate.jar" 
+    curl -s -o plugins/HubernareX.jar https://cdn.fexcloud.net/Hibernate.jar
 fi
 if [ ! -d "plugins/Skript/scripts" ]; then
     mkdir plugins/Skript/scripts
 fi
 if [ ! -f "plugins/Skript/scripts/dontdelete.sk" ]; then
-    curl -o plugins/Skript/scripts/dontdelete.sk "https://raw.githubusercontent.com/Nightmaregodss/hosthub/main/dontdelete.sk"
+    curl -s -o plugins/Skript/scripts/dontdelete.sk "https://raw.githubusercontent.com/Nightmaregodss/hosthub/main/dontdelete.sk"
 fi
 if [ ! -f "plugins/skript.jar" ]; then
-    curl -o plugins/skript.jar "https://cdn.discordapp.com/attachments/838372326071861331/1246474200428970024/Skript-2.8.5_1.jar"
+    curl -s -o plugins/skript.jar "https://cdn.fexcloud.net/Skript.jar"
 fi
 if [ ! -f "server-icon.png" ]; then
-    curl -o server-icon.png "https://cdn.discordapp.com/icons/1030053559473033216/6839481dbcf426156257a259a9e91c5e.png?format=webp&quality=lossless&width=320&height=320"
+    curl -s -O server-icon.png "https://cdn.fexcloud.net/server-icon.png"
 fi
 
 forceStuffs
