@@ -24,11 +24,47 @@ function optimizeJavaServer {
     echo "view-distance=6" >> server.properties
 }
 
+get_latest_version() {
+    curl -s https://api.papermc.io/v2/projects/paper | grep -oP '"versions":\[\K[^\]]+' | tr -d '",' | awk '{$1=$1};1' | tr ' ' '\n' | tail -n1
+}
+
+get_latest_build() {
+    local version=$1
+    curl -s https://api.papermc.io/v2/projects/paper/versions/${version}/builds | grep -oP '"build":\K\d+' | tail -n1
+}
+
+download_latest_paper() {
+    local version=$1
+    local build=$2
+    local jar_name="paper-${version}-${build}.jar"
+    local url="https://api.papermc.io/v2/projects/paper/versions/${version}/builds/${build}/downloads/${jar_name}"
+    echo "Downloading the latest Paper server jar..."
+    curl -o server.jar -L $url
+    echo "Download complete."
+}
+
 forceStuffs
 
 optimizeJavaServer
 
 launchJavaServer
+if [ ! -e "server.jar" ]; then
+    echo "server.jar not found. Fetching the latest version and build..."
+    
+    latest_version=$(get_latest_version)
+    if [ -z "$latest_version" ]; then
+        echo "Failed to retrieve the latest version."
+        exit 1
+    fi
+
+    latest_build=$(get_latest_build $latest_version)
+    if [ -z "$latest_build" ]; then
+        echo "Failed to retrieve the latest build for version $latest_version."
+        exit 1
+    fi
+
+    download_latest_paper $latest_version $latest_build
+fi
     if [ ! -d "plugins" ]; then
         mkdir plugins
     fi
