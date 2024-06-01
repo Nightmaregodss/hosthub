@@ -1,0 +1,11 @@
+every 1 hour:
+    broadcast "This server is hosted in hosthub, make your own server in hosthub today. Buy Hosthub Premium to hide this message and keep us alive by doing so."
+    
+    set {_book} to a new book named "Hosthub Premium" with author "Hosthub"
+    add "Buy Hosthub Premium today to keep us alive and your server running for months." to pages of {_book}
+    add "Visit our discord for more details and to see all the benefits you get with Hosthub Premium." to pages of {_book}
+    add "Thank you for supporting Hosthub!" to pages of {_book}
+    
+    loop all players:
+        give {_book} to loop-player
+        open {_book} for loop-player
