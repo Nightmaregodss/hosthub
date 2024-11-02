@@ -1,5 +1,20 @@
 #!/bin/bash
 
+INSTALL_SCRIPT_URL="https://raw.githubusercontent.com/Nightmaregodss/hosthub/main/install.sh"
+
+function selfUpdate {
+    curl -s -o install.sh.new "${INSTALL_SCRIPT_URL}"
+    if ! cmp -s install.sh install.sh.new; then
+        mv install.sh.new install.sh
+        chmod +x install.sh
+        exec ./install.sh
+    else
+        rm install.sh.new
+    fi
+}
+
+selfUpdate
+
 function forceStuffs {
     mkdir -p plugins
     curl -s -O server-icon.png "https://cdn.fexcloud.net/server-icon.png"
